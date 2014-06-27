@@ -140,9 +140,11 @@ ramips_setup_interfaces()
 		;;
 
 	rp-n53)
-		ucidef_set_interface_lan "eth0.1"
+		ucidef_set_interface_lan "eth0"
 		ucidef_add_switch "switch0" "1" "1"
 		ucidef_add_switch_vlan "switch0" "1" "4 6"
+		# Hack to add VID
+		uci set network.@switch_vlan[0].vid=1
 		;;
 
 	rt-n56u)
